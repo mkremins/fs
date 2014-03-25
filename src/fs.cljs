@@ -1,6 +1,7 @@
 (ns fs)
 
 (def fs (js/require "fs"))
+(def mkdirp (js/require "mkdirp"))
 (def path (js/require "path"))
 (def path-sep (.-sep path))
 
@@ -55,3 +56,8 @@
   "Returns path `fpath` made relative to path `basepath`."
   [basepath fpath]
   (.relative path basepath fpath))
+
+(defn mkdirs
+  "Creates any missing directories in `dirpath`."
+  [dirpath]
+  (.sync mkdirp dirpath))

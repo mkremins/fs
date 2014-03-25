@@ -2,10 +2,16 @@
   :description "Filesystem utilities for ClojureScript via node.js"
   :url "http://github.com/mkremins/fs"
 
-  :dependencies [[org.clojure/clojure "1.6.0"]
-                 [org.clojure/clojurescript "0.0-2173"]]
+  :dependencies
+  [[org.clojure/clojure "1.6.0"]
+   [org.clojure/clojurescript "0.0-2173"]]
 
-  :plugins [[lein-cljsbuild "1.0.2"]]
+  :node-dependencies
+  [[mkdirp "0.3.5"]]
+
+  :plugins
+  [[lein-cljsbuild "1.0.2"]
+   [lein-npm "0.3.2"]]
 
   :source-paths ["src"]
 
