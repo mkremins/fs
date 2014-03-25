@@ -1,7 +1,8 @@
 (ns fs)
 
 (def fs (js/require "fs"))
-(def path-sep (.-sep (js/require "path")))
+(def path (js/require "path"))
+(def path-sep (.-sep path))
 
 (defn slurp
   "Returns a string of the contents of the file at `fpath`."
@@ -35,3 +36,22 @@
   "Returns a lazy sequence of filepaths under root `fpath`."
   [fpath]
   (tree-seq dir? #(ls % false) fpath))
+
+(defn basename
+  "Returns the last portion of `fpath`. If `extname` is specified, drops the
+  extension whose name is `extname` from the returned filename."
+  ([fpath] (.basename path fpath))
+  ([fpath extname] (.basename path fpath (str "." extname))))
+
+(defn extname
+  "Returns the name of `fpath`'s extension – the part of the filename that
+  follows the final period – or nil if `fpath` has no extension."
+  [fpath]
+  (let [ext (.extname path fpath)]
+    (when (> (count ext) 1)
+      (subs ext 1))))
+
+(defn rel-path
+  "Returns path `fpath` made relative to path `basepath`."
+  [basepath fpath]
+  (.relative path basepath fpath))
