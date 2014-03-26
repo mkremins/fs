@@ -22,21 +22,13 @@
   (let [stats (.statSync fs fpath)]
     (.-isDirectory stats)))
 
-(defn ls
-  "Given a path to a directory `dirpath`, returns a shallow seq of subpaths
-  contained within. If `relative?` (default true) is false, all subpaths are
-  prepended with `dirpath`."
-  ([dirpath] (ls dirpath true))
-  ([dirpath relative?]
-    (let [subpaths (.readdirSync fs dirpath)]
-      (if relative?
-          (map (partial str dirpath path-sep) subpaths)
-          (seq subpaths)))))
-
 (defn files-seq
   "Returns a lazy sequence of filepaths under root `fpath`."
   [fpath]
-  (tree-seq dir? #(ls % false) fpath))
+  (letfn [(ls [dirpath]
+            (map (partial str dirpath path-sep)
+                 (.readdirSync fs dirpath)))]
+    (tree-seq dir? ls fpath)))
 
 (defn dirname
   "Returns the directory portion of `fpath`."
