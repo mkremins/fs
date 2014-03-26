@@ -6,15 +6,18 @@
 (def path-sep (.-sep path))
 
 (defn slurp
-  "Returns a string of the contents of the file at `fpath`."
-  [fpath]
-  (.readFileSync fs fpath #js {:encoding "utf8"}))
+  "Returns a string of the contents of the file at `fpath`. `opts` are those of
+  node.js's `fs.readFileSync`."
+  [fpath & opts]
+  (let [opts (merge {:encoding "utf8"} (apply hash-map opts))]
+    (.readFileSync fs fpath (clj->js opts))))
 
 (defn spit
   "Writes a string `contents` to the file at `fpath`, overwriting whatever the
-  file previously contained."
-  [fpath contents]
-  (.writeFileSync fs fpath contents))
+  file previously contained. `opts` are those of node.js's `fs.writeFileSync`."
+  [fpath contents & opts]
+  (let [opts (apply hash-map opts)]
+    (.writeFileSync fs fpath contents (clj->js opts))))
 
 (defn dir?
   "Returns true if the file at `fpath` is a directory, otherwise false."
