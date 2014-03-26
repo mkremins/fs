@@ -23,7 +23,7 @@
   "Returns true if the file at `fpath` is a directory, otherwise false."
   [fpath]
   (let [stats (.statSync fs fpath)]
-    (.-isDirectory stats)))
+    (.isDirectory stats)))
 
 (defn files-seq
   "Returns a lazy sequence of filepaths under root `fpath`."
