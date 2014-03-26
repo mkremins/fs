@@ -38,6 +38,11 @@
   [fpath]
   (tree-seq dir? #(ls % false) fpath))
 
+(defn dirname
+  "Returns the directory portion of `fpath`."
+  [fpath]
+  (.dirname path fpath))
+
 (defn basename
   "Returns the last portion of `fpath`. If `extname` is specified, drops the
   extension whose name is `extname` from the returned filename."
@@ -60,4 +65,4 @@
 (defn mkdirs
   "Creates any missing directories in `dirpath`."
   [dirpath]
-  (.sync mkdirp dirpath))
+  (.sync mkdirp (dirname dirpath)))
