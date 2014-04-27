@@ -1,4 +1,4 @@
-(defproject fs "0.1.0-SNAPSHOT"
+(defproject mkremins/fs "0.1.0-SNAPSHOT"
   :description "Filesystem utilities for ClojureScript via node.js"
   :url "http://github.com/mkremins/fs"
 
