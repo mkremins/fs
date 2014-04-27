@@ -4,14 +4,14 @@
 
   :dependencies
   [[org.clojure/clojure "1.6.0"]
-   [org.clojure/clojurescript "0.0-2173"]]
+   [org.clojure/clojurescript "0.0-2202"]]
 
   :node-dependencies
-  [[mkdirp "0.3.5"]]
+  [[mkdirp "0.4.0"]]
 
   :plugins
-  [[lein-cljsbuild "1.0.2"]
-   [lein-npm "0.3.2"]]
+  [[lein-cljsbuild "1.0.3"]
+   [lein-npm "0.4.0"]]
 
   :source-paths ["src"]
 
