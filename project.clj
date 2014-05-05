@@ -23,5 +23,4 @@
               :compiler {
                 :output-to "target/fs.js"
                 :output-dir "target/out"
-                :optimizations :simple
-                :source-map true}}]})
+                :optimizations :simple}}]})
