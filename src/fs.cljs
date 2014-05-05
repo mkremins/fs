@@ -5,6 +5,19 @@
 (def path (js/require "path"))
 (def path-sep (.-sep path))
 
+(defn cwd
+  "Returns the absolute path to the current working directory."
+  []
+  (.cwd js/process))
+
+(defn cd
+  "Changes the current working directory to the directory at `dirpath`. Returns
+   the absolute path to the new working directory. Throws an error if the file
+   at `dirpath` does not exist or is not a directory."
+  [dirpath]
+  (.chdir js/process dirpath)
+  (cwd))
+
 (defn slurp
   "Returns a string of the contents of the file at `fpath`. `opts` are those of
   node.js's `fs.readFileSync`."
