@@ -1,4 +1,4 @@
-(ns fs)
+(ns fs.core)
 
 (def fs (js/require "fs"))
 (def mkdirp (js/require "mkdirp"))
