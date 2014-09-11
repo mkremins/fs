@@ -1,4 +1,4 @@
-(defproject mkremins/fs "0.3.0-SNAPSHOT"
+(defproject mkremins/fs "0.3.0"
   :description "Filesystem utilities for ClojureScript via node.js"
   :url "http://github.com/mkremins/fs"
   :license {:name "MIT License"
