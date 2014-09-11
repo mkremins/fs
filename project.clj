@@ -7,7 +7,7 @@
 
   :dependencies
   [[org.clojure/clojure "1.6.0"]
-   [org.clojure/clojurescript "0.0-2202"]]
+   [org.clojure/clojurescript "0.0-2322"]]
 
   :node-dependencies
   [[mkdirp "0.4.0"]]
